@@ -3,7 +3,7 @@ __author__ = 'Dustin'
 import sys, os, re
 
 for file in os.listdir():
-    if re.search("^\d{4}|^\d{3}", file):
+    if re.search("^\d{4}.(xyrs|txt)|^\d{3}.(xyrs|txt)", file):
         file_in = file
 
 try:
