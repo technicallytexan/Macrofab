@@ -25,17 +25,7 @@ xyrsIN_list = list(xyrsIN)
 # Q designators tend to be the three-pole SOT-23 type components and usually have a different offset.
 # TODO: These offset should be tested across a few different panels.
 for element in xyrsIN_list:
-    if element[0] == 'C':
-        strsplit = element.split("\t")
-        strsplit[3] = str(int(strsplit[3]) - 90)
-        strsplit = "\t".join(strsplit)
-        element = strsplit
-    elif element[0] == 'R':
-        strsplit = element.split("\t")
-        strsplit[3] = str(int(strsplit[3]) - 90)
-        strsplit = "\t".join(strsplit)
-        element = strsplit
-    elif element[0] == 'D':
+    if re.search("^(C|R|D)", element):
         strsplit = element.split("\t")
         strsplit[3] = str(int(strsplit[3]) - 90)
         strsplit = "\t".join(strsplit)
