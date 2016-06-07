@@ -2,7 +2,18 @@ __author__ = 'Dustin'
 
 import sys
 
-xyrsIN = open(file_in, 'r')
+try:
+    file_in = sys.argv[1]
+except IndexError:
+    print("Syntax: \"xyrsFIX.py <file>\" where <file> is the input XYRS")
+    exit(1)
+
+try:
+    xyrsIN = open(file_in, 'r')
+except IOError:
+    print("IO Error; File not Found")
+    exit(1)
+    
 xyrsOUT = open('xyrs.out', 'w')
 
 xyrsIN_list = list(xyrsIN)
