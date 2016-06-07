@@ -2,11 +2,14 @@ __author__ = 'Dustin'
 
 import sys, os, re
 
+extension = ".out"
+
 # Find file named XXXX.xyrs or XXXX.txt where XXXX is a three or four digit integer (panel number)
 # This is generally what I name the XYRS files as I work with them
 for file in os.listdir():
     if re.search("^\d{3,}.(xyrs|txt)", file):
         file_in = file
+        break
 
 try:
     xyrsIN = open(file_in, 'r')
@@ -17,7 +20,10 @@ except NameError:
     print("XYRS File Not Found")
     exit(1)
 
-xyrsOUT = open('xyrs.out', 'w')
+# Name output file same as input file but with .out extension
+filename_split = file.split(".")
+out_filename = "".join([filename_split[0], extension])
+xyrsOUT = open(out_filename, 'w')
 
 xyrsIN_list = list(xyrsIN)
 
