@@ -4,7 +4,7 @@ import sys, os, re
 
 extension = ".out"
 
-# Find file named XXXX.xyrs or XXXX.txt where XXXX is a three or four digit integer (panel number)
+# Find file named XXXX.xyrs or XXXX.txt where XXXX is a three (or more) digit integer (panel number)
 # This is generally what I name the XYRS files as I work with them
 for file in os.listdir():
     if re.search("^\d{3,}.(xyrs|txt)", file):
