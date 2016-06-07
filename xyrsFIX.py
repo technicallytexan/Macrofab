@@ -1,12 +1,19 @@
 __author__ = 'Dustin'
 
-import sys, os
+import sys, os, re
 
 for file in os.listdir():
-    if file.endswith(".xyrs"):
+    if re.search("^\d{4}|^\d{3}", file):
         file_in = file
 
-xyrsIN = open(file_in, 'r')
+try:
+    xyrsIN = open(file_in, 'r')
+except IOError:
+    print("IO Error")
+    exit(2)
+except NameError:
+    print("XYRS File Not Found")
+    exit(1)
 
 xyrsOUT = open('xyrs.out', 'w')
 
