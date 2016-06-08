@@ -6,7 +6,7 @@ extension = ".out"
 
 # Find file named XXXX.xyrs or XXXX.txt where XXXX is a three (or more) digit integer (panel number)
 # This is generally what I name the XYRS files as I work with them
-for file in os.listdir():
+for file in os.listdir(os.getcwd()):
     if re.search("^\d{3,}.(xyrs|txt)", file):
         file_in = file
         break
@@ -25,8 +25,8 @@ filename_split = file.split(".")
 out_filename = "".join([filename_split[0], extension])
 xyrsOUT = open(out_filename, 'w')
 
-print("Input panel size: ", end="")
-panel_size = input()
+print("Input panel size: ")
+panel_size = str(input())
 
 xyrsOUT.write("".join([filename_split[0], "\n"]))
 
@@ -35,7 +35,7 @@ xyrsIN_list = list(xyrsIN)
 # Each capacitor, resistor, diode, and other 3-pin package components need to be offset
 # TODO: These offset should be tested across a few different panels.
 for element in xyrsIN_list:
-    if re.search("^(C|R|D|Q)", element):
+    if re.search("(C|R|D|Q)", element):
         strsplit = element.split("\t")
         strsplit[3] = str(int(strsplit[3]) - 90)
         strsplit = "\t".join(strsplit)
