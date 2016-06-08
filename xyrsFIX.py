@@ -33,16 +33,18 @@ xyrsOUT.write("".join([filename_split[0], "\n"]))
 xyrsIN_list = list(xyrsIN)
 
 # Each capacitor, resistor, diode, and other 3-pin package components need to be offset
+# Adjusted for clockwise/counter-clockwise inconsistency
 # TODO: These offset should be tested across a few different panels.
 for element in xyrsIN_list:
-    if re.search("(C|R|D|Q)", element):
-        strsplit = element.split("\t")
+    strsplit = element.split("\t")
+    if re.search("(C|R|D|Q|U|F)", strsplit[0]):
         if re.search("(270|90)", strsplit[3]):
            strsplit[3] = str(int(strsplit[3]) + 90)
         else:
             strsplit[3] = str(int(strsplit[3]) - 90)
         strsplit = "\t".join(strsplit)
         element = strsplit
+        print(element)
     xyrsOUT.write(element)
 xyrsOUT.write("\n")
 if re.search("(5\w5)|5", panel_size):
