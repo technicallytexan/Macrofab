@@ -45,21 +45,21 @@ for element in xyrsIN_list:
         element = strsplit
     xyrsOUT.write(element)
 xyrsOUT.write("\n")
-if re.search("5", panel_size):
+if re.search("(5\w5)|5", panel_size):
     xyrsOUT.write("FID1\t130\t2505\t0\t1\t1\t40\t40\tFID\tFID\n")
     xyrsOUT.write("FID2\t4880\t1005\t0\t1\t1\t40\t40\tFID\tFID\n")
     xyrsOUT.write("FID3\t4880\t4005\t0\t1\t1\t40\t40\tFID\tFID\n")
     xyrsOUT.write("FID1\t130\t2505\t0\t2\t1\t40\t40\tFID\tFID\n")
     xyrsOUT.write("FID2\t4880\t1005\t0\t2\t1\t40\t40\tFID\tFID\n")
     xyrsOUT.write("FID3\t4880\t4005\t0\t2\t1\t40\t40\tFID\tFID\n")
-elif re.search("12", panel_size):
+elif re.search("(12\w12)|12", panel_size):
     xyrsOUT.write("FID1\t130\t6005\t0\t1\t1\t40\t40\tFID\tFID\n")
     xyrsOUT.write("FID2\t11880\t1005\t0\t1\t1\t40\t40\tFID\tFID\n")
     xyrsOUT.write("FID3\t11880\t11005\t0\t1\t1\t40\t40\tFID\tFID\n")
     xyrsOUT.write("FID1\t130\t6005\t0\t2\t1\t40\t40\tFID\tFID\n")
     xyrsOUT.write("FID2\t11880\t1005\t0\t2\t1\t40\t40\tFID\tFID\n")
     xyrsOUT.write("FID3\t11880\t11005\t0\t2\t1\t40\t40\tFID\tFID\n")
-elif re.search("16", panel_size):
+elif re.search("(16\w16)|16", panel_size):
     xyrsOUT.write("FID1\t130\t8005\t0\t1\t1\t40\t40\tFID\tFID\n")
     xyrsOUT.write("FID2\t15880\t1005\t0\t1\t1\t40\t40\tFID\tFID\n")
     xyrsOUT.write("FID3\t15880\t15005\t0\t1\t1\t40\t40\tFID\tFID\n")
