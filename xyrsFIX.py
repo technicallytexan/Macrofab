@@ -39,11 +39,18 @@ xyrsIN_list = list(xyrsIN)
 # TODO: These offset should be tested across a few different panels.
 for element in xyrsIN_list:
     strsplit = element.split("\t")
-    if re.search("(C|R|D|Q|U|F)", strsplit[0]):
-        if re.search("(270|90)", strsplit[3]):
-            strsplit[3] = str(int(strsplit[3]) + 90)
+    if re.search("\w?\w?(C|R|F|D|U|Q)(\w|\W)?\d+", strsplit[0]):
+        if re.search("U\W?\d+", strsplit[0]):
+            if re.search("(270|90)", strsplit[3]):
+                strsplit[3] = int(strsplit[3]) + 180
+                if strsplit[3] >= 360:
+                    strsplit[3] = int(strsplit[3]) - 360
+                strsplit[3] = str(strsplit[3])
         else:
-            strsplit[3] = str(int(strsplit[3]) - 90)
+            if re.search("(270|90)", strsplit[3]):
+                strsplit[3] = str(int(strsplit[3]) + 90)
+            else:
+                strsplit[3] = str(int(strsplit[3]) - 90)
         strsplit = "\t".join(strsplit)
         element = strsplit
         output_log.write(element)
