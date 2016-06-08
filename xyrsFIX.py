@@ -24,6 +24,7 @@ except NameError:
 filename_split = file.split(".")
 out_filename = "".join([filename_split[0], extension])
 xyrsOUT = open(out_filename, 'w')
+output_log = open("out.log", 'w')
 
 print("Input panel size: ")
 panel_size = str(input())
@@ -44,7 +45,7 @@ for element in xyrsIN_list:
             strsplit[3] = str(int(strsplit[3]) - 90)
         strsplit = "\t".join(strsplit)
         element = strsplit
-        print(element)
+        output_log.write(element)
     xyrsOUT.write(element)
 xyrsOUT.write("\n")
 if re.search("5", panel_size):
