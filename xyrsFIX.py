@@ -28,15 +28,11 @@ xyrsOUT = open(out_filename, 'w')
 xyrsIN_list = list(xyrsIN)
 
 # Each capacitor, resistor, diode, and other 3-pin package components need to be offset
-# Q designators tend to be the three-pole SOT-23 type components and usually have a different offset.
 # TODO: These offset should be tested across a few different panels.
 for element in xyrsIN_list:
     if re.search("^(C|R|D|Q)", element):
         strsplit = element.split("\t")
-        if element[0] == 'Q':
-            strsplit[3] = str(int(strsplit[3]) + 90)
-        else:
-            strsplit[3] = str(int(strsplit[3]) - 90)
+        strsplit[3] = str(int(strsplit[3]) - 90)
         strsplit = "\t".join(strsplit)
         element = strsplit
     xyrsOUT.write(element)
