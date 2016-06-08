@@ -1,6 +1,7 @@
-__author__ = 'Dustin'
+import os
+import re
 
-import os, re
+__author__ = 'Dustin'
 
 extension = ".out"
 
@@ -40,7 +41,7 @@ for element in xyrsIN_list:
     strsplit = element.split("\t")
     if re.search("(C|R|D|Q|U|F)", strsplit[0]):
         if re.search("(270|90)", strsplit[3]):
-           strsplit[3] = str(int(strsplit[3]) + 90)
+            strsplit[3] = str(int(strsplit[3]) + 90)
         else:
             strsplit[3] = str(int(strsplit[3]) - 90)
         strsplit = "\t".join(strsplit)
