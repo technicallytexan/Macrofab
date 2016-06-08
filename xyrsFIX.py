@@ -1,6 +1,6 @@
 __author__ = 'Dustin'
 
-import sys, os, re
+import os, re
 
 extension = ".out"
 
@@ -37,7 +37,10 @@ xyrsIN_list = list(xyrsIN)
 for element in xyrsIN_list:
     if re.search("(C|R|D|Q)", element):
         strsplit = element.split("\t")
-        strsplit[3] = str(int(strsplit[3]) - 90)
+        if re.search("(270|90)", strsplit[3]):
+           strsplit[3] = str(int(strsplit[3]) + 90)
+        else:
+            strsplit[3] = str(int(strsplit[3]) - 90)
         strsplit = "\t".join(strsplit)
         element = strsplit
     xyrsOUT.write(element)
