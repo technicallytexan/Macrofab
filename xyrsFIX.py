@@ -25,6 +25,11 @@ filename_split = file.split(".")
 out_filename = "".join([filename_split[0], extension])
 xyrsOUT = open(out_filename, 'w')
 
+print("Input panel size: ", end="")
+panel_size = input()
+
+xyrsOUT.write("".join([filename_split[0], "\n"]))
+
 xyrsIN_list = list(xyrsIN)
 
 # Each capacitor, resistor, diode, and other 3-pin package components need to be offset
@@ -36,3 +41,25 @@ for element in xyrsIN_list:
         strsplit = "\t".join(strsplit)
         element = strsplit
     xyrsOUT.write(element)
+xyrsOUT.write("\n")
+if re.search("5", panel_size):
+    xyrsOUT.write("FID1\t130\t2505\t0\t1\t1\t40\t40\tFID\tFID\n")
+    xyrsOUT.write("FID2\t4880\t1005\t0\t1\t1\t40\t40\tFID\tFID\n")
+    xyrsOUT.write("FID3\t4880\t4005\t0\t1\t1\t40\t40\tFID\tFID\n")
+    xyrsOUT.write("FID1\t130\t2505\t0\t2\t1\t40\t40\tFID\tFID\n")
+    xyrsOUT.write("FID2\t4880\t1005\t0\t2\t1\t40\t40\tFID\tFID\n")
+    xyrsOUT.write("FID3\t4880\t4005\t0\t2\t1\t40\t40\tFID\tFID\n")
+elif re.search("12", panel_size):
+    xyrsOUT.write("FID1\t130\t6005\t0\t1\t1\t40\t40\tFID\tFID\n")
+    xyrsOUT.write("FID2\t11880\t1005\t0\t1\t1\t40\t40\tFID\tFID\n")
+    xyrsOUT.write("FID3\t11880\t11005\t0\t1\t1\t40\t40\tFID\tFID\n")
+    xyrsOUT.write("FID1\t130\t6005\t0\t2\t1\t40\t40\tFID\tFID\n")
+    xyrsOUT.write("FID2\t11880\t1005\t0\t2\t1\t40\t40\tFID\tFID\n")
+    xyrsOUT.write("FID3\t11880\t11005\t0\t2\t1\t40\t40\tFID\tFID\n")
+elif re.search("16", panel_size):
+    xyrsOUT.write("FID1\t130\t8005\t0\t1\t1\t40\t40\tFID\tFID\n")
+    xyrsOUT.write("FID2\t15880\t1005\t0\t1\t1\t40\t40\tFID\tFID\n")
+    xyrsOUT.write("FID3\t15880\t15005\t0\t1\t1\t40\t40\tFID\tFID\n")
+    xyrsOUT.write("FID1\t130\t8005\t0\t2\t1\t40\t40\tFID\tFID\n")
+    xyrsOUT.write("FID2\t15880\t1005\t0\t2\t1\t40\t40\tFID\tFID\n")
+    xyrsOUT.write("FID3\t15880\t15005\t0\t2\t1\t40\t40\tFID\tFID\n")
