@@ -39,18 +39,17 @@ xyrsIN_list = list(xyrsIN)
 # TODO: These offset should be tested across a few different panels.
 for element in xyrsIN_list:
     strsplit = element.split("\t")
-    if re.search("\w*[CRFDUQL][\w$]*\d+", strsplit[0]):
-        if re.search("U[$]?\d+", strsplit[0]):
-            if re.search("(270|90)", strsplit[3]):
-                strsplit[3] = int(strsplit[3]) + 180
-                if strsplit[3] >= 360:
-                    strsplit[3] = int(strsplit[3]) - 360
-                strsplit[3] = str(strsplit[3])
+    if re.search("U[$]?\d+", strsplit[0]):
+        if re.search("(270|90)", strsplit[3]):
+            strsplit[3] = int(strsplit[3]) + 180
+            if strsplit[3] >= 360:
+                strsplit[3] = int(strsplit[3]) - 360
+            strsplit[3] = str(strsplit[3])
+    else:
+        if re.search("(270|90)", strsplit[3]):
+            strsplit[3] = str(int(strsplit[3]) + 90)
         else:
-            if re.search("(270|90)", strsplit[3]):
-                strsplit[3] = str(int(strsplit[3]) + 90)
-            else:
-                strsplit[3] = str(int(strsplit[3]) - 90)
+            strsplit[3] = str(int(strsplit[3]) - 90)
         strsplit = "\t".join(strsplit)
         element = strsplit
         output_log.write(element)
@@ -77,7 +76,3 @@ elif re.search("16", panel_size):
     xyrsOUT.write("FID1\t130\t8005\t0\t2\t1\t40\t40\tFID\tFID\n")
     xyrsOUT.write("FID2\t15880\t1005\t0\t2\t1\t40\t40\tFID\tFID\n")
     xyrsOUT.write("FID3\t15880\t15005\t0\t2\t1\t40\t40\tFID\tFID\n")
-
-xyrsIN.close()
-xyrsOUT.close()
-output_log.close()
