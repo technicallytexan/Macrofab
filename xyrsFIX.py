@@ -76,3 +76,7 @@ elif re.search("16", panel_size):
     xyrsOUT.write("FID1\t130\t8005\t0\t2\t1\t40\t40\tFID\tFID\n")
     xyrsOUT.write("FID2\t15880\t1005\t0\t2\t1\t40\t40\tFID\tFID\n")
     xyrsOUT.write("FID3\t15880\t15005\t0\t2\t1\t40\t40\tFID\tFID\n")
+
+xyrsIN.close()
+xyrsOUT.close()
+output_log.close()
