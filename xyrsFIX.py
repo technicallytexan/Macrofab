@@ -23,7 +23,7 @@ except NameError:
 
 # Name output file same as input file but with .out extension
 filename_split = file.split(".")
-out_filename = "".join([filename_split[0], extension])
+out_filename = filename_split[0] + extension
 xyrsOUT = open(out_filename, 'w')
 output_log = open("out.log", 'w')
 
